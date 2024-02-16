@@ -6,6 +6,8 @@ import os
 # Add tokenizer so that spacy 
 nlp = spacy.load("en_core_web_sm")
 
+# 
+
 # Parsing function
 
 def text_parsing(file_path):
