@@ -10,7 +10,7 @@ import streamlit as st
 nlp = spacy.load("en_core_web_sm")
 
 # define file path to text directories
-data_path = os.path.join(os.path.dirname(__file__), '..', '..','Jsem_Data')
+data_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'Jsem_Data')
 
 # Creates empty list for text file paths
 text_path = []
