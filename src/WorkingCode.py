@@ -2,7 +2,6 @@ import spacy
 import os
 import re
 import streamlit as st
-from fuzzywuzzy import fuzz
 
 # Load the NLP model
 nlp = spacy.load("en_core_web_sm")
