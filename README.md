@@ -3,13 +3,11 @@
 
 ## Semester: Spring 2024
 
-This repository contains student project materials, including project report, data, code, and references to literature for this departmentally-sponsored project. __As you complete each of the below sections in this document, please be sure to remove the preamble text so that it does not appear in your work.__ Please work with your first reader to answer any questions or concerns that you may have.
-
 ## GitHub Handle: colinelder
 
 ## Name: Colin Elder
 
-## Major: Data Science
+## Major: Data Science, Economics
 
 ## Project Name: Colin's Fact Finder
 
@@ -25,7 +23,13 @@ The significance of this project lies in the relevancy this is the increase in u
 
 ## Literature Review
 
-TODO: Conduct literature review by describing relevant work related to the project and hence providing an overview of the state of the art in the area of the project. This section serves to contextualize the study within the existing body of literature, presenting a thorough review of relevant prior research and scholarly contributions. In clear and meaningful language, this section aims to demonstrate the problems, gaps, controversies, or unanswered questions that are associated with the current understanding of the topic. In addition, this section serves to highlight the current study's unique contribution to the field. By summarizing and critiquing existing works, this section provides a foundation for readers to appreciate the novelty and significance of the study in relation to the broader academic discourse. The "Literature Review" section further contributes to the `why is the project important?` question. The number of scholarly work included in the literature review may vary depending on the project.
+The first book that I reviewed for this project was Text Analytics with Python: A Practitioner's Guide to Natural Language Processing. This book provided me with a lot of backround knowledge on what natural language processing was and how it works. This book helped readers connect their ideal project to natural language processing and realize how it can benefit them. Additionally, it addresses the current limitations and work being done to improve text analysis with machine learning and natural language processing. 
+
+From this, the next article reviewed the ways that a user can begin to implement natural language processing within python. This book was titled "Natural Language Processing with Python- A Practical Introduction. This demonstrated many ways and libraries that the user could use to start analyzing text in python. This helped to narrow down which and figure out which solution would be best for this artifact.
+
+The goal of the next article was to review a specific library more in depth so that it could be implemented best. This turned out to be the ```fuzzywuzzy``` library. This article included ways to install the library, how to run it, and a more in depth view on how it works/how to best implement it in code.
+
+The final article reviewed delt with the user interface, which was ```streamlit```. This was one that was suggested by the professor at the beginning of the project, so this article supplement the information already given to us and provided extra information about how it works. This article helped to design and run the interface properly so that it was user friendly and implemented the code properly with it.
 
 ## Methods
 
@@ -37,20 +41,36 @@ From this point, I was able to start implementing my artifact. The first steps t
 
 The next step that I took was implementing the user interface/dashboard for the program. After some research I settled on streamlit for this aspect of the artifact. I decided on this because I was able to find a lot of valuable information about it as well as valuable tutorials and demonstrations.
 
-Following this, I was able to start working on the fact checking implementation and text analysis. To find the best way to go about this, I reviewed articles that outlined various possible libraries and techniques that I could use for this implementation. One library in particular that seemed to be a very viable option was the ```Spacy``` library. While this seemed like a good option at the time, after a lot of valuable discussion in class I turned to a different library that other students had found more success with. This was the ```fuzzywuzzy```. This library allowed the programmer to implement a "similarity score" which allowed for a better range of text matching for the program. This ensures that the question inputted does not have to perfectly match the text file, but rather meet a quota for similarity.
+Following this, I was able to start working on the fact checking implementation and text analysis. To find the best way to go about this, I reviewed articles that outlined various possible libraries and techniques that I could use for this implementation. One library in particular that seemed to be a very viable option was the ```Spacy``` library. While this seemed like a good option at the time, after a lot of valuable discussion in class I turned to a different library that other students had found more success with. This was the ```fuzzywuzzy```. This library allowed the programmer to implement a similarity threshold which allowed for a better range of text matching for the program. This ensures that the question inputted does not have to perfectly match the text file, but rather meet a quota for similarity.
 
 The last thing that I did to verify the usability was manual experimentation for the program. This involves going into the streamlit dashboard myself and asking questions as if I were a user. However, I already knew the answer to my facts and where to find them in the text files. From this I could verify that proper output was being produced. Additionally, I quickly added a print statement in my parsing function so that I could verify that each text file was in fact being parsed through. This print statement printed the name of each file as it was appended to the list.
 
 
-TODO: Discuss the methods of the project to be able to answer the `how` question (`how was this project completed?`). The methods section in an academic research outlines the specific procedures, techniques, and methodologies employed to conduct the study, offering a transparent and replicable framework for the research. It details the resources behind the work, in terms of, for example, the design of the algorithm and the experiment(s), data collection methods, applied software libraries, required tools, the types of statistical analyses and models which are applied to ensure the rigor and validity of the study. This section provides clarity for other researchers to understand and potentially replicate the study, contributing to the overall reliability and credibility of the research findings.
-
 ## Using the Artifact
 
-TODO: The result of your work will be the delivery of some type of artifact which will likely contain software programming solutions (i.e., Python code, HTML pages, or similar). To allow the user to experience and execute your artifact, you must first explain how to set up the initial conditions to run or use the artifact. Be sure to offer explicit details and instructions regarding the installation of the necessary foundational libraries, drivers, external software projects, containers and similar types of tertiary software which are involved in executing your artifact. Once these initial software installations have been completed, then you are asked to offer the necessary instructions for actually executing the artifact. For this, please provide all command line parameters or associated bash commands for execution. Please remember that users are unwilling to "figure-out" how to use code in absence of the essential instructions concerning the execution of project artifacts.
+
+The first step in making sure that you can run the fact finder is that you make sure that you have the right data and the correct path to it. To read more about the data, see the data folder located within the github repository. To ensure that the correct path to the data is being used, ensure that the data are all .txt files and adjust the following line in the code as necessary.
+
+```data_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'Jsem_Data')```
+
+Beyond this, the user must verify that they have correctly installed all of the proper libraries. There are three libraries needed for this project. They are ```os```, ```fuzzywuzzy```, and ```streamlit```. To install these run the following commands- 
+
+```pip install streamlit```
+```pip install os```
+```pip install fuzzywuzzy```
+
+From there, the program is ready to run! All the user needs to do is run the following command in the terminal, just be sure that you are located in the proper directory location before running the command. This is the ```src``` directory. The command is as follows:
+
+```streamlit run workingcode.py```
+
+After this is ran, the article will automatically transport you to the streamlit dashboard where the user can input whatever fact they want.
+
 
 ## Results and Outcomes
 
-TODO: Discuss the outcomes of your project in this section. Depending on the project type, the presented results and outcomes will vary. In some projects, you will be asked to present a theoretical analysis, and in others your experimental study and its results. In this section, you are also to demonstrate an enhanced version of your artifact by showing its capabilities and applications, in light of the evaluation metrics for assessing the artifact
+One of the first tests that was ran in order to verify that this artifact was working properly was printing out the list of files as they were being parsed through in the code. By viewing the print statement, it was able to be verified that each article was being parsed through one at a time.
+
+The ultimate outcome of this program is a true or false value being returned, as well as the file in which it was found. This allows users to verify their questions with trustworthy sources as well as further their knowledge by reading the scholarly source that their question was answered in.
 
 ---
 
