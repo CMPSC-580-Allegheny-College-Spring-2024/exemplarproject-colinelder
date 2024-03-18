@@ -1,40 +1,29 @@
-import spacy
+from fuzzywuzzy import fuzz
 import os
-import re
 import streamlit as st
-
-# Load the NLP model
-nlp = spacy.load("en_core_web_sm")
 
 # Define file path to text directories. 
 data_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'Jsem_Data')
 
-# Function to clean text data
-def remove_non_letters(data):
-    # Retain spaces and letters for readability
-    return re.sub(r'[^a-zA-Z\s]', '', data)
-
 # Function to read and preprocess text files
 def preprocess_files(directory):
     texts = {}
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
+    for filename in os.listdir(data_path):
+        file_path = os.path.join(data_path, filename)
         if filename.endswith('.txt'):
-        # Appends the name of the file to the list instead of txt
-            file_path.append(filename)
-        if os.path.isfile(file_path):
             with open(file_path, 'r', encoding='utf-8') as file:
                 content = file.read()
-                cleaned_content = remove_non_letters(content)
-                texts[filename] = cleaned_content
+                # Store content with filename as key
+                texts[filename] = content
     return texts
 
 
 # Fact-checking function
-def fact_checker(input_fact, texts, threshhold=75):
+def fact_checker(input_fact, texts, threshold=75):
     found_in_files = []
     for filename, content in texts.items():
-        if input_fact.lower() in content.lower():
+        similarity_score = fuzz.partial_ratio(input_fact.lower(), content.lower())
+        if similarity_score >= threshold:
             found_in_files.append(filename)
     return found_in_files
 
